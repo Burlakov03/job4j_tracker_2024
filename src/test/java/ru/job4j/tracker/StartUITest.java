@@ -146,4 +146,69 @@ class StartUITest {
                         + "=== Завершение программы ===" + ln
         );
     }
+
+    @Test
+    public void whenInvalidExit() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item[] items = {
+                new Item("test1"),
+                new Item("test2"),
+                new Item("test3")
+        };
+        String ln = System.lineSeparator();
+        StringBuilder buffer = new StringBuilder();
+        for (int i = 0; i < items.length; i++) {
+            tracker.add(items[i]);
+            buffer.append(items[i]);
+            if (i < items.length - 1) {
+                buffer.append(ln);
+            }
+        }
+        Input input = new MockInput(
+                new String[]{"8", "0", "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindAllAction(output),
+                new ExitAction(output)
+        };
+        new StartUI(output).init(input, tracker, actions);
+        assertThat(output.toString()).isEqualTo(
+                "Меню:" + ln
+                        + "0. Показать все заявки" + ln
+                        + "1. Завершить программу" + ln
+                        + "Неверный ввод, вы можете выбрать: 0 .. " + (actions.length - 1) + ln
+                        + "Меню:" + ln
+                        + "0. Показать все заявки" + ln
+                        + "1. Завершить программу" + ln
+                        + "=== Вывод всех заявок ===" + ln
+                        + buffer + ln
+                        + "Меню:" + ln
+                        + "0. Показать все заявки" + ln
+                        + "1. Завершить программу" + ln
+                        + "=== Завершение программы ===" + ln
+        );
+    }
+
+    @Test
+    void whenInvalidExit2() {
+        Output output = new StubOutput();
+        Input input = new MockInput(
+                new String[] {"8","0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = new UserAction[]{
+                new ExitAction(output)
+        };
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Меню:" + ln
+                        + "0. Завершить программу" + ln
+                        + "Неверный ввод, вы можете выбрать: 0 .. 0" + ln
+                        + "Меню:" + ln
+                        + "0. Завершить программу" + ln
+                        + "=== Завершение программы ===" + ln
+        );
+    }
 }
