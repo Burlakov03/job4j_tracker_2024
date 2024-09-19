@@ -23,7 +23,7 @@ public class FindAllAction implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         output.println("=== Вывод всех заявок ===");
-        ArrayList<Item> items = (ArrayList<Item>) tracker.findAll();
+        ArrayList<Item> items = new ArrayList<>(tracker.findAll());
         if (!items.isEmpty()) {
             for (Item item : items) {
                 output.println(item.toString());
