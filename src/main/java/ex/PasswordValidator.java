@@ -48,7 +48,7 @@ public class PasswordValidator {
 
     public static boolean isSpecial(String word) {
         for (char ch : word.toCharArray()) {
-            if (Character.isLetterOrDigit(ch)) {
+            if (!Character.isLetterOrDigit(ch)) {
                 return false;
             }
         }
