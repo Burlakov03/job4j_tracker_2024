@@ -56,6 +56,9 @@ public class Tracker {
     }
 
     public void delete(int id) {
-        items.remove(id);
+        if (id <= size) {
+            items.remove(id - 1);
+            size--;
+        }
     }
 }
