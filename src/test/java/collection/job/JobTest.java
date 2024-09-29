@@ -99,5 +99,4 @@ class JobTest {
         assertThat(result).isLessThan(0);
     }
 
-
 }
