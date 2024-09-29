@@ -1,5 +1,7 @@
 package collection.job;
 
+import java.util.Objects;
+
 public class Job implements Comparable<Job> {
     private String name;
 
@@ -24,6 +26,23 @@ public class Job implements Comparable<Job> {
                 + "name='" + name + '\''
                 + ", priority=" + priority
                 + '}';
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        Job job = (Job) object;
+        return priority == job.priority && Objects.equals(name, job.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, priority);
     }
 
     @Override
