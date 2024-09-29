@@ -9,7 +9,6 @@ import java.util.TreeSet;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 public class UserTest {
     @Test
     public void whenAsc() {
