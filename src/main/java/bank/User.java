@@ -2,8 +2,20 @@ package bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает пользователя банковским сервисом
+ *
+ * @author VLADIMIR BURLAKOV
+ * @version 1.0
+ */
 public class User {
+    /**
+     * Данное поле хранит паспорт пользователя
+     */
     private String passport;
+    /**
+     * Данное поле хранит имя пользователя
+     */
     private String username;
 
     public User(String passport, String username) {

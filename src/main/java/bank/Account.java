@@ -2,6 +2,9 @@ package bank;
 
 import java.util.Objects;
 
+/**
+ * Данный класс реализует счет пользователя в банке
+ */
 public class Account {
     private String requisite;
     private double balance;
