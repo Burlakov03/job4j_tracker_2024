@@ -9,7 +9,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-
 class ListToMapTest {
     @Test
     void whenInputListNotHaveDuplicate() {
