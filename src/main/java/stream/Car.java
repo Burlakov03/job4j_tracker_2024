@@ -1,6 +1,7 @@
 package stream;
 
 import java.time.LocalDate;
+import java.util.stream.Stream;
 
 public class Car {
     private String brand;
@@ -83,5 +84,15 @@ public class Car {
                 .buildVolume(1.8)
                 .build();
         System.out.println(car2);
+        Stream.of("one", "two", "three")
+                .filter(x -> {
+                    System.out.print(x);
+                    return x.length() <= 3;
+                })
+                .map(x -> {
+                    System.out.println(x);
+                    return x.toUpperCase();
+                })
+                .forEach(System.out::println);
     }
 }
